@@ -97,7 +97,7 @@ Intel 虚拟化技术 - Enabled
 | 蓝牙      |       |  |
 | SMBus设备 |              | VirtualSMC.kext SMCProcessor.kext SMCSuperIO.kext            |
 |固态硬盘|SN720 256G |NVMeFix.kext(不加没问题，官网建议)
-----
+
 
 ## 其他设置
 
@@ -119,7 +119,6 @@ OpenCore 拥有高度的可定制化，建议先参考下面的说明使用配�
 
 2.修改/EFI/OC/config.plist文件 DeviceProperties > Add > PciRoot(0x0)/Pci(0x2,0x0) 下 AAPL,ig-platform-id 参数为07009b3e，并新增 framebuffer-unifiedmem 参数为00000080。
 ## 正常工作
-----
 ***12.21更新  当前置USB口被U盘等占用时，无线网络就会连不上或者没流量，暂时没有解决方法***
 - [x] 声卡（板载）/ 网卡（板载）
 - [x] 显卡（核显）/ 硬解 4K（H.264）
