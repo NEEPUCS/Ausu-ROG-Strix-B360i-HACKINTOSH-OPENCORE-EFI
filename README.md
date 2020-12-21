@@ -12,7 +12,7 @@
 |               主板 | 华硕 ROG Strix B360i Gaming                   |
 |             处理器 | 英特尔酷睿 i5-8400K                            |
 |               显卡 | Intel UHD Graphics 630                       |
-|               硬盘 | 西部数据 SN720 256GB                          |
+|               硬盘 | 西部数据 Black 3D NVMe WDS250G2X0C 256GB                          |
 |               内存 | 十铨（Team Group） 8GB DDR4 2666MHz x 2       |
 |        无线 + 蓝牙 |  Broadcom 94360CS2拆机卡 + 转接带（替换板载网卡时，发现此款网卡长，所以使用转接带，将网卡放在机甲壳内，巧妙的是，我将WIFI天线至于机箱内）|
 |  机箱 + 电源 + 散热 | 迎广肖邦 + 自带150W电源（多次替换电源风扇，只为噪音较小的电源散热风扇）+ 猫头鹰（NOCTUA）NH-L9i CPU散热器 |
