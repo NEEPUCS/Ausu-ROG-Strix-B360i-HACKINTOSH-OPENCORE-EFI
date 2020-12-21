@@ -17,7 +17,6 @@
 |        无线 + 蓝牙 |  Broadcom 94360CS2拆机卡 + 转接带（替换板载网卡时，发现此款网卡长，所以使用转接带，将网卡放在机甲壳内，巧妙的是，我将WIFI天线放至于机箱背侧）|
 |  机箱 + 电源 + 散热 | 迎广肖邦 + 自带150W电源（多次替换电源风扇，只为噪音较小的电源散热风扇）+ 猫头鹰（NOCTUA）NH-L9i CPU散热器 |
 |             显示器 | DELL U2417H 23.5英寸(1920 × 1080)                |
-|     摄像头 + 麦克风 | 无                       |
 |               键盘 | Ikbc（有线红轴）                 |
 |               鼠标 | 罗技 Logitech Go Pro Wireless |
 
@@ -91,7 +90,7 @@ Intel 虚拟化技术 - Enabled
 | --------- | ------------ | ------------------------------------------------------------ |
 | 显卡      | UHD630       | WhateverGreen.kext                                           |
 | 有线网卡  | Intel® I219V | IntelMausi.kext                                              |
-| 声卡      | ALC887       | AppleALC.kext                                                |
+| 声卡      | S1220a       | AppleALC.kext                                                |
 | USB       | 按需定制     | XHCI-unsupported.kext USBInjectAll.kext |
 | Wi-Fi     | Broadcom 94360CS2      | AirportBrcmFixup.kext                                        |
 | 蓝牙      |       |  |
