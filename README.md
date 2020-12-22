@@ -9,8 +9,8 @@
 
 |         硬件       |                   型号                     | 
 |-------------------:|:------------------------------------------|
-|               主板 | 华硕 ROG Strix B360i Gaming                   |
-|             处理器 | 英特尔酷睿 i5-8400K                            |
+|               主板 | 华硕 ROG Strix B360-i Gaming                   |
+|             处理器 | 英特尔酷睿 i5-8400                            |
 |               显卡 | Intel UHD Graphics 630                       |
 |               硬盘 | 西部数据 Black 3D NVMe WDS250G2X0C 256GB                          |
 |               内存 | 十铨（Team Group） 8GB DDR4 2666MHz x 2       |
@@ -37,8 +37,8 @@
 |           其它外设 | 根据个人喜好选配                                              |
 
 ## 更新记录
-- 2020.12.22 更新了HDMI显示输出问题(使用Hackintool应用预设补丁，同时修复了热插拔问题(boot-args 添加 igfxonln=1)）
-----
+
+- 2020.12.22 更新了HDMI显示输出问题(使用Hackintool应用预设补丁，同时修复了热插拔问题(boot-args 添加 igfxonln=1)),测试了2K显示器的DP接口输出，没有问题，同时测试双屏输出没有问题(双屏输出均为1080P 接口分别为HDMI和DP)
 - 2020.12.21 经过测试和两天时间的使用，上传第一版
 ## 硬件杂谈
 关于主板如何更换板载网卡可自行搜索B站，将网线内置于机箱后面本该放置HDD 2.5的位置，并用胶带固定，走线可以通过CPU供电上方的走线口。
@@ -93,22 +93,22 @@ Intel 虚拟化技术 - Enabled
 | 声卡      | S1220a       | AppleALC.kext                                                |
 | USB       | 按需定制     | XHCI-unsupported.kext USBInjectAll.kext |
 | Wi-Fi     | Broadcom 94360CS2      | AirportBrcmFixup.kext                                        |
-| 蓝牙      |       |  |
+| 蓝牙      |  Broadcom 94360CS2     |  |
 | SMBus设备 |              | VirtualSMC.kext SMCProcessor.kext SMCSuperIO.kext            |
-|固态硬盘|SN720 256G |NVMeFix.kext(不加没问题，官网建议)
+|固态硬盘|Black 3D NVMe WDS250G2X0C 256G |NVMeFix.kext(缺少也没问题，如果因为硬盘过热死机就加上，官网建议加)
 
 
 ## 其他设置
 
 HideAuxiliay - Enabled
 
-boot-args String brcmfx-country=CN(修改网卡的国家地区代码为CN) igfxfw=2(核显用户) -v(啰嗦模式)
+boot-args String brcmfx-country=CN(修改网卡的国家地区代码为CN，#a也许比CN更好，但我暂时没有硬件去测试) igfxfw=2(核显用户) -v(啰嗦模式) igfxonln=1(修复热插拔的问题)
 
 AirPortBrcm4360_Injector.kext - MaxKernal -> 19.9.9
 
 禁止Apple固件更新 - Enabled
 
-## 基本使用(从[GeQ1an](https://github.com/GeQ1an/MSI-B360M-MORTAR-HACKINTOSH-OPENCORE-EFI)复制，本EFI的PCI参数是我使用的，如果不行，请删掉并重新配置)
+## 基本使用(*从[GeQ1an](https://github.com/GeQ1an/MSI-B360M-MORTAR-HACKINTOSH-OPENCORE-EFI)复制，本EFI的PCI参数是我使用的，如果不行，请删掉并重新配置*)
 准备 [ProperTree](https://github.com/corpnewt/ProperTree) 编辑配置文件，尽量避免使用其他编辑器。
 OpenCore 拥有高度的可定制化，建议先参考下面的说明使用配置好的基础版本，之后再通过 [daliansky](https://github.com/daliansky) ([黑果小兵的博客](https://blog.daliansky.net/)) 和 [xjn](https://blog.xjn819.com/) 学习更多内容进行修改。
 
@@ -116,8 +116,10 @@ OpenCore 拥有高度的可定制化，建议先参考下面的说明使用配�
 
 1.填入Macmini8,1机型的三码 + ROM 信息到/EFI/OC/config.plist文件 PlatformInfo > Generic 处，并将机型修改为Macmini8,1。
 
-2.修改/EFI/OC/config.plist文件 DeviceProperties > Add > PciRoot(0x0)/Pci(0x2,0x0) 下 AAPL,ig-platform-id 参数为07009b3e，并新增 framebuffer-unifiedmem 参数为00000080。
+2.修改/EFI/OC/config.plist文件 DeviceProperties > Add > PciRoot(0x0)/Pci(0x2,0x0) 下 AAPL,ig-platform-id 参数(优先使用默认的参数，不行再修改)
 ## 正常工作
+***12.22更新  问题“前置USB口被U盘等占用时，无线网络就会连不上或者没流量”，因为我拔出了一个nvme固态硬盘，竟然正常了，猜测PCIE通道的占用***
+
 ***12.21更新  当前置USB口被U盘等占用时，无线网络就会连不上或者没流量，暂时没有解决方法***
 - [x] 声卡（板载）/ 网卡（板载）
 - [x] 显卡（核显）/ 硬解 4K（H.264）
@@ -128,7 +130,7 @@ OpenCore 拥有高度的可定制化，建议先参考下面的说明使用配�
 - [x] 睿频 / 原生电源管理
 - [x] 睡眠 / 键盘、鼠标唤醒
 
-[截图] (https://github.com/NEEPUCS/Ausu-ROG-Strix-B360i-HACKINTOSH-OPENCORE-EFI/tree/master/images)
+##  [系统截图](https://github.com/NEEPUCS/Ausu-ROG-Strix-B360i-HACKINTOSH-OPENCORE-EFI/tree/master/images)
 
 ## 进阶使用
 1. 参考 [xjn 博客](https://blog.xjn819.com/?p=543) 的进阶部分「4.1 CPU 的变频优化」或 xjn 大佬发表于 PCbeta 的帖子 [FCPX 核显独显全程满速指南](http://bbs.pcbeta.com/viewthread-1836920-1-1.html) 中「HWP 变频」部分
@@ -145,4 +147,4 @@ OpenCorePkg [官方版本](https://github.com/acidanthera/OpenCorePkg/releases) 
 ## 关于这个项目
 可以无限制的下载、使用、修改、分发、上传，不可用作商业用途。
 ## 关于我
-本人Hack技术不精通，略懂OpenCore皮毛，最近装机时能感觉到黑苹果配置的难度，一方面，希望能够帮助大家解决难题，另一方面，希望各位大佬能优化我的EFI，使其更完善；同时，如果仓库文件有错误烦请各位大佬指正。
+本人Hack技术不精通，略懂OpenCore皮毛，最近装机时能感觉到黑苹果配置的难度，一方面，希望能够帮助大家解决难题，另一方面，希望各位大佬能优化我的EFI，测试显示器和网卡的兼容性，使其更完善；同时，如果仓库文件有错误烦请各位大佬指正。
